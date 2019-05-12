@@ -1,0 +1,16 @@
+{
+  "name": "intellijson",
+  "version": "1.0.0",
+  "description": "Recibe json desde VSCaptureMP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alejandro Figar",
+  "license": "ISC",
+  "dependencies": {
+    "bigchaindb-driver": "^4.1.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
