@@ -11,6 +11,17 @@
   "dependencies": {
     "bigchaindb-driver": "^4.1.0",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4"
-  }
+    "express": "^4.16.4",
+    "serverless-offline": "^5.8.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afigar/anesthesia-blockchain.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/afigar/anesthesia-blockchain/issues"
+  },
+  "homepage": "https://github.com/afigar/anesthesia-blockchain#readme"
 }
