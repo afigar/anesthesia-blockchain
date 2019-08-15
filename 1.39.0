@@ -1,0 +1,25 @@
+
+> ed25519@0.0.4 install D:\intelliJson\node_modules\ed25519
+> node-gyp rebuild
+
+
+D:\intelliJson\node_modules\ed25519>if not defined npm_config_node_gyp (node "C:\Program Files\nodejs\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin\\..\..\node_modules\node-gyp\bin\node-gyp.js" rebuild )  else (node "C:\Program Files\nodejs\node_modules\npm\node_modules\node-gyp\bin\node-gyp.js" rebuild ) 
+
+> spawn-sync@1.0.15 postinstall D:\intelliJson\node_modules\spawn-sync
+> node postinstall
+
+
+> serverless@1.49.0 postinstall D:\intelliJson\node_modules\serverless
+> node ./scripts/postinstall.js
+
+ +--------------------------------------------------+
+ |                                                  |
+ |  Serverless Framework successfully installed!    |
+ |  To start your first project, run “serverless”.  |
+ |                                                  |
+ +--------------------------------------------------+
+
++ serverless@1.49.0
+added 281 packages from 159 contributors and audited 7125 packages in 121.345s
+found 0 vulnerabilities
+

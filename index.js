@@ -3,7 +3,7 @@ var bodyParser = require('body-parser')
 const driver = require('bigchaindb-driver')
 
 const alice = new driver.Ed25519Keypair()
-const conn = new driver.Connection('https://test.bigchaindb.com/api/v1/')
+const conn = new driver.Connection('https://test.ipdb.io/api/v1/')
 
 function addslashes(string) {
   return string.replace(/\\/g, '\\\\').
@@ -39,15 +39,16 @@ app.use(function (req, res, next) {
     [ driver.Transaction.makeOutput(
         driver.Transaction.makeEd25519Condition(alice.publicKey))],
     alice.publicKey)
-  const txSigned = driver.Transaction.signTransaction(tx, alice.privateKey)
-  //console.log(txSigned)
-  conn.postTransactionCommit(txSigned).then(function(retrievedTx){
-    console.log('Transaction', retrievedTx.id, 'successfully posted.')	
-  },function(err){
-    console.log(err)
-  });
-  res.status(200).end()
-  next()
+      const txSigned = driver.Transaction.signTransaction(tx, alice.privateKey)
+      //console.log(txSigned)
+      conn.postTransactionCommit(txSigned).then(function(retrievedTx){
+        console.log('Transaction', retrievedTx.id, 'successfully posted.')	
+      },function(err){
+        console.log(err)
+      });
+      res.status(200).end()
+      next()
 })
 
-app.listen(3000);
+//app.listen(3000);
+module.exports = app;
