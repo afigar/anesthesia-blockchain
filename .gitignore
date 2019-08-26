@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 # package directories
-node_modules
-jspm_packages
-
-# Serverless directories
-.serverless
 .aws
-.git
 .serverless
 .vscode
-.node_modules
-=======
+node_modules
 # Logs
 logs
 *.log
@@ -72,4 +64,3 @@ typings/
 
 # next.js build output
 .next
->>>>>>> 71b4a8788faff9f5166949a8950c59b0c65d3da3
