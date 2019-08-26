@@ -3,9 +3,9 @@ node_modules
 jspm_packages
 
 # Serverless directories
-.serverless
-.aws
-.git
-.serverless
-.vscode
-/node_modules
+./serverless
+./aws
+./git
+./serverless
+./vscode
+./node_modules
