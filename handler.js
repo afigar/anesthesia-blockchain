@@ -7,7 +7,7 @@ const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
 
 const alice = new driver.Ed25519Keypair();
-const conn = new driver.Connection('http://rstudio.gotdns.org:9984/api/v1/');
+const conn = new driver.Connection('http://test-bigchaindb.for-our.info:9984/api/v1/');
 
 function addslashes(string) {
   return string.replace(/\\/g, '\\\\').
@@ -23,13 +23,21 @@ function addslashes(string) {
 // parse application/json
 app.use(bodyParser.json());
 
+app.get('/help/', (req, res) => {
+    res.send(req.body) ;
+    res.status(200).end();
+});
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
 app.post('/api/v1/', (req, res) => {
 //app.use(function (req, res, next) {
   //console.log(req.body) // populated!
   // auxmessage = { 'message': JSON.stringify(req.body) }
   //console.log(auxmessage)
+  //res.send(addslashes(JSON.stringify(req.body)));
   const tx = driver.Transaction.makeCreateTransaction(
-    { message: addslashes(JSON.stringify(req.body)) },
     {
       datetime: new Date().toString(),
       location: 'Maternity',
@@ -38,6 +46,15 @@ app.post('/api/v1/', (req, res) => {
           model: 'Philips Intellivue MP40',
           id: '1234asbdfsg',
       }
+    }  ,
+    { datetime: new Date().toString(),
+      location: 'Maternity',
+      or: 'q11',
+      device: {
+          model: 'Philips Intellivue MP40',
+          id: '1234asbdfsg',
+      },
+      message: addslashes(JSON.stringify(req.body))
     },
     [ driver.Transaction.makeOutput(
         driver.Transaction.makeEd25519Condition(alice.publicKey))],
@@ -45,13 +62,13 @@ app.post('/api/v1/', (req, res) => {
       const txSigned = driver.Transaction.signTransaction(tx, alice.privateKey)
       //console.log(txSigned)
       conn.postTransactionCommit(txSigned).then(function(retrievedTx){
-        console.log('Transaction', retrievedTx.id, 'successfully posted.')
+        //console.log('Transaction', retrievedTx.id, 'successfully posted.')
         res.send( 'Transaction', retrievedTx.id, 'successfully posted.'	)
       },function(err){
         console.log(err)
       });
       //context.done(null, "Todo salio bien");
-      res.send("Todo Bien...")
+      res.send("Todo bien: ",retrievedTx.id)
       res.status(200).end();
       //next()
 });
