@@ -27,11 +27,11 @@ app.get('/help/', (req, res) => {
     res.send(req.body) ;
     res.status(200).end();
 });
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.send('Hello World!');
 });
 
-app.post('/api/v1/', (req, res) => {
+app.post('/api/v1/', async (req, res) => {
 //app.use(function (req, res, next) {
   //console.log(req.body) // populated!
   // auxmessage = { 'message': JSON.stringify(req.body) }
@@ -61,7 +61,7 @@ app.post('/api/v1/', (req, res) => {
     alice.publicKey)
       const txSigned = driver.Transaction.signTransaction(tx, alice.privateKey)
       //console.log(txSigned)
-      conn.postTransactionCommit(txSigned).then(function(retrievedTx){
+      await conn.postTransactionCommit(txSigned).then(function(retrievedTx){
         //console.log('Transaction', retrievedTx.id, 'successfully posted.')
         res.send( 'Transaction', retrievedTx.id, 'successfully posted.'	)
       },function(err){
