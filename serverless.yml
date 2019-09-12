@@ -24,7 +24,8 @@ provider:
   name: aws
   runtime: nodejs10.x
   stage: dev
-
+  region: us-east-1
+  memorySize: 128
 # you can overwrite defaults here
 #  stage: dev
 #  region: us-east-1
