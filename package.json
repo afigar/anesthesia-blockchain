@@ -16,7 +16,6 @@
     "bigchaindb-driver": "^4.1.0",
     "bip39": "^2.5.0",
     "body-parser": "^1.18.3",
-    "claudia-api-builder": "^4.1.2",
     "ed25519": "0.0.4",
     "express": "^4.16.4",
     "node-gyp": "^5.0.3",
@@ -25,9 +24,7 @@
     "serverless-offline": "^5.8.0",
     "webpack": "^4.0.0"
   },
-  "devDependencies": {
-    "claudia": "^5.6.0"
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/afigar/anesthesia-blockchain.git"
