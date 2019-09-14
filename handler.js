@@ -5,6 +5,8 @@ const app = express();
 const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
 AWS.config.update({region: 'us-east-1'});
+const sns = new AWS.SNS()
+const TOPIC_ARN = 'arn:aws:sns:us-east-1:212507307353:IntelliChain';
 
 function addslashes(string) {
   return string.replace(/\\/g, '\\\\').
@@ -48,17 +50,36 @@ app.post('/api/v1/', async (req, res) => {
     Message: addslashes(JSON.stringify(req.body)), 
     TopicArn: 'arn:aws:sns:us-east-1:212507307353:IntelliChain'
   };
-  var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'}).publish(params).promise();
-  publishTextPromise.then(
+  var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'})
+  await publishTextPromise.publish(params).promise().then(
     function(data) {
       console.log("Message" + params.Message +"send sent to the topic"+ params.TopicArn);
       console.log("MessageID is " + data.MessageId);
     }).catch(
       function(err) {
       console.error(err, err.stack);
+      console.log("Error") ;
     });
-      res.send("Success!")
-      res.status(200).end();
+res.send("Success!")
+res.status(200).end();
+});
+
+app.post('/api/v2', async (event) => {
+    if (!event.body) {
+        return Promise.resolve({statusCode: 400, body: 'invalid'});
+    }
+    try {
+    await sns.publish({
+      Message: addslashes(JSON.stringify(event.body)),
+      TopicArn: TOPIC_ARN
+    })
+      .promise();
+    return ({ statusCode: 204, body: '' });
+  }
+  catch (err) {
+    console.log(err);
+    return { statusCode: 200, body: 'sns-error' };
+  }
 });
 
 module.exports.generic = serverless(app);
