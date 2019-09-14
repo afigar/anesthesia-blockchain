@@ -5,7 +5,6 @@ const app = express();
 const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
 AWS.config.update({region: 'us-east-1'});
-const sns = new AWS.SNS()
 const TOPIC_ARN = 'arn:aws:sns:us-east-1:212507307353:IntelliChain';
 
 function addslashes(string) {
@@ -62,24 +61,6 @@ app.post('/api/v1/', async (req, res) => {
     });
 res.send("Success!")
 res.status(200).end();
-});
-
-app.post('/api/v2', async (event) => {
-    if (!event.body) {
-        return Promise.resolve({statusCode: 400, body: 'invalid'});
-    }
-    try {
-    await sns.publish({
-      Message: addslashes(JSON.stringify(event.body)),
-      TopicArn: TOPIC_ARN
-    })
-      .promise();
-    return ({ statusCode: 204, body: '' });
-  }
-  catch (err) {
-    console.log(err);
-    return { statusCode: 200, body: 'sns-error' };
-  }
 });
 
 module.exports.generic = serverless(app);
