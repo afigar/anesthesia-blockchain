@@ -5,7 +5,7 @@ const app = express();
 const AWS = require('aws-sdk');
 const bodyParser = require('body-parser');
 AWS.config.update({region: 'us-east-1'});
-const TOPIC_ARN = 'arn:aws:sns:us-east-1:212507307353:IntelliChain';
+const TOPIC_ARN = 'arn:aws:sns:us-east-1:xxxxxxxxx:Intellixxxx';
 
 function addslashes(string) {
   return string.replace(/\\/g, '\\\\').
@@ -47,7 +47,7 @@ app.post('/api/v1/', async (req, res) => {
   console.log(auxmessage)
   var params = {
     Message: addslashes(JSON.stringify(req.body)), 
-    TopicArn: 'arn:aws:sns:us-east-1:212507307353:IntelliChain'
+    TopicArn: 'arn:aws:sns:us-east-1:xxxxxx:Intellixxxx'
   };
   var publishTextPromise = new AWS.SNS({apiVersion: '2010-03-31'})
   await publishTextPromise.publish(params).promise().then(
