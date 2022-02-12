@@ -9,7 +9,7 @@
   "author": "Alejandro Figar",
   "license": "ISC",
   "dependencies": {
-    "ajv": "^5.0.0",
+    "ajv": "^6.12.3",
     "aws-sdk": "^2.503.0",
     "aws-serverless-express": "^3.3.6",
     "base-x": "^3.0.4",
