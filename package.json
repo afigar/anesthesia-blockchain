@@ -15,7 +15,7 @@
     "base-x": "^3.0.4",
     "bip39": "^2.5.0",
     "body-parser": "^1.18.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "serverless": "^1.49.0",
     "serverless-http": "^2.0.2",
     "serverless-offline": "^5.8.0",
