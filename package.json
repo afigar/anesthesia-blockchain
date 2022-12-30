@@ -16,7 +16,7 @@
     "bip39": "^2.5.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "serverless": "^1.49.0",
+    "serverless": "^1.83.3",
     "serverless-http": "^2.0.2",
     "serverless-offline": "^5.8.0",
     "webpack": "^4.0.0"
