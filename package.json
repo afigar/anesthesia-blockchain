@@ -19,7 +19,7 @@
     "serverless": "^1.49.0",
     "serverless-http": "^2.0.2",
     "serverless-offline": "^5.8.0",
-    "webpack": "^4.0.0"
+    "webpack": "^5.75.0"
   },
   "devDependencies": {},
   "repository": {
